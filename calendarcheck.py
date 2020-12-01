@@ -6,18 +6,17 @@ from bs4 import BeautifulSoup
 import os
 import telegram_send
 import sys
-print(__file__)
 
-firstSetup = not os.path.exists("./user.conf")
-ownNumber=1427
-if(firstSetup):
-    telegram_send.configure("./user.conf", channel=False, group=False, fm_integration=False)
+confPath = "./user.conf"
+firstSetup = not os.path.exists(confPath)
+ownNumber=726 #1427
 
 def splitList(lst):
     for i in range(0, len(lst), 3):
         yield lst[i:i + 3]
 
-
+if(firstSetup):
+    telegram_send.configure(confPath, channel=False, group=False, fm_integration=False)
 
 today = date.today()
 currentDay = str(today.strftime("%d")).lstrip("0")
@@ -35,11 +34,14 @@ winnerlist = list(splitList(winners))
 #print(winnerlist)
 won=False
 ownList=[]
+#print(winnerlist)
 for winner in winnerlist:
     if int(winner[0])==int(ownNumber):
         won = True
         ownList = winner
-        print("you won " + winner[1] + " from " + winner[2])
+        winnermessage = "you won " + winner[1] + " from " + winner[2]
+        print(winnermessage)
+        telegram_send.send(conf=confPath, messages=[winnermessage])
         break
         #pass
 if not won:
