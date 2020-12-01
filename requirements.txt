@@ -1,0 +1,4 @@
+telegram-send
+requests
+bs4
+urllib3
