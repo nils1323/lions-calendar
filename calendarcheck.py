@@ -9,7 +9,7 @@ import sys
 
 confPath = "./user.conf"
 firstSetup = not os.path.exists(confPath)
-ownNumber=726 #1427
+ownNumber=1427
 
 def splitList(lst):
     for i in range(0, len(lst), 3):
