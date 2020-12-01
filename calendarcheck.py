@@ -46,3 +46,4 @@ for winner in winnerlist:
         #pass
 if not won:
     print("you didn't win")
+    telegram_send.send(conf=confPath, messages=["No win Today ;()"])
