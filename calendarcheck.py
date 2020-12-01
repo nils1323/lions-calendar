@@ -39,7 +39,7 @@ for winner in winnerlist:
     if int(winner[0])==int(ownNumber):
         won = True
         ownList = winner
-        winnermessage = "you won " + winner[1] + " from " + winner[2]
+        winnermessage = "you number " + winner[0] + " won " + winner[1] + " from " + winner[2]
         print(winnermessage)
         telegram_send.send(conf=confPath, messages=[winnermessage])
         break
